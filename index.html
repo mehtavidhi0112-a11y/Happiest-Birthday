@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Suarabh ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+/* 🔐 LOCK SCREEN */
+#lockScreen {
+    height: 100vh;
+    background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+
+#lockScreen input {
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#lockScreen button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 20px;
+    background: white;
+    color: #ff6f91;
+    cursor: pointer;
+}
+
+#error {
+    margin-top: 10px;
+    color: red;
+}
+
+/* 💕 MAIN SITE */
+#mainContent {
+    display: none;
+    background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
+    color: white;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+section {
+    padding: 60px 20px;
+}
+
+.photo {
+    width: 250px;
+    height: 250px;
+    margin: 20px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    animation: float 4s ease-in-out infinite;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+video {
+    width: 80%;
+    max-width: 500px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+/* Floating effect */
+@keyframes float {
+    0%,100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+/* 🌌 Night Cartoon Section */
+.night-section {
+    background: linear-gradient(to bottom, #1a1a40, #0d0d2b);
+    position: relative;
+}
+
+.cartoon {
+    width: 280px;
+    margin: 30px auto;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(255,255,255,0.6);
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 20px #fff; }
+    to { box-shadow: 0 0 40px #ff9edb; }
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: rise 5s linear infinite;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0); opacity: 1;}
+    100% { transform: translateY(-100vh); opacity: 0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 PASSWORD SCREEN -->
+<div id="lockScreen">
+    <h1>🔐 Private Birthday Surprise</h1>
+    <p>Only Suarabh can unlock this 💕</p>
+    <input type="password" id="password" placeholder="Enter the magic word">
+    <button onclick="checkPassword()">Unlock ❤️</button>
+    <p id="error"></p>
+</div>
+
+<!-- 💕 MAIN CONTENT -->
+<div id="mainContent">
+
+<section>
+    <h1>Happy Birthday Suarabh ❤️</h1>
+    <p>You are my favorite chapter in my life 💕</p>
+</section>
+
+<section>
+    <h2>✨ The First Time We Met ✨</h2>
+    <div class="photo">
+        <img src="first.jpg">
+    </div>
+    <p>That day changed my life forever 💖</p>
+</section>
+
+<section>
+    <h2>💑 Us Now 💑</h2>
+    <div class="photo">
+        <img src="now.jpg">
+    </div>
+    <p>Look at us now… stronger and more in love ❤️</p>
+</section>
+
+<section>
+    <h2>🎥 Our Beautiful Memories 🎥</h2>
+    <video controls>
+        <source src="memory.mp4" type="video/mp4">
+    </video>
+</section>
+
+<section class="night-section">
+    <h2>🌙 In Every Universe 💫</h2>
+    <div class="cartoon">
+        <img src="cartoon.png">
+    </div>
+    <p>I would still choose you. Always. Forever. ❤️</p>
+</section>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+const correctPassword = "my men";
+
+function checkPassword() {
+    const entered = document.getElementById("password").value
+        .toLowerCase()
+        .trim();
+
+    if (entered === correctPassword) {
+
+        document.getElementById("lockScreen").innerHTML = `
+            <h1>Welcome My Love ❤️</h1>
+            <p>Loading your surprise...</p>
+        `;
+
+        setTimeout(() => {
+            document.getElementById("lockScreen").style.display = "none";
+            const main = document.getElementById("mainContent");
+            main.style.display = "block";
+            main.style.opacity = "0";
+            main.style.transition = "opacity 2s ease";
+            
+            setTimeout(() => {
+                main.style.opacity = "1";
+            }, 100);
+
+            document.getElementById("bgMusic").play();
+
+        }, 2000);
+
+    } else {
+        document.getElementById("error").innerHTML =
+            "Wrong password 😜 Try again my love!";
+    }
+}
+
+/* Floating hearts */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
